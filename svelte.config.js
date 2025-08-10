@@ -20,7 +20,7 @@ const config = {
 			precompress: false,
 			strict: true
 		}),
-		appDir: `_app`,
+		appDir: `_app`
 	}
 };
 
