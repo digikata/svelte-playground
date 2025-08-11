@@ -38,6 +38,8 @@
 /* postcss-ignore-next */
 @source "../node_modules/flowbite-svelte-icons/dist";
 
+@import './lib/styles/flowbite-theme.css';
+
 @layer base {
 	/* disable chrome cancel button */
 	input[type='search']::-webkit-search-cancel-button {

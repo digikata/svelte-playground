@@ -1,17 +1,48 @@
 /* Flowbite-Svelte minimal theme */
+
 @layer components {
+
+	/* Common text classes for dark and light themes */
+	.fb-text {
+		@apply text-secondary-800;
+	}
+	.dark .fb-text {
+		@apply text-secondary-100;
+	}
+
+	.fb-card {
+		@apply border border-secondary-200 bg-white fb-text;
+	}
+	.dark .fb-card {
+		@apply border-secondary-800 fb-text;
+	}
+
+	.fb-dropdown {
+		@apply rounded-md border border-secondary-200 bg-white fb-text shadow-md;
+	}
+	.dark .fb-dropdown {
+		@apply border-secondary-800 bg-secondary-900;
+	}
+
+	.fb-dropdown-item {
+		@apply block rounded px-3 py-2 hover:bg-secondary-100 hover:text-secondary-900 focus:ring-2 focus:ring-secondary-300 focus:outline-none;
+	}
+	.dark .fb-dropdown-item {
+		@apply hover:bg-secondary-800 hover:text-white focus:ring-secondary-700;
+	}
+
 	.fb-sidebar {
-		@apply w-64 rounded-md border border-secondary-200 bg-secondary-50 p-2 text-secondary-800;
+		@apply w-64 rounded-md border border-secondary-200 bg-secondary-50 p-2 fb-text;
 	}
 	.dark .fb-sidebar {
-		@apply border-secondary-800 bg-secondary-900 text-secondary-100;
+		@apply border-secondary-800 bg-secondary-900;
 	}
 
 	.fb-sidebar-item {
-		@apply rounded-md text-secondary-800 hover:bg-secondary-100 hover:text-secondary-900 focus:ring-2 focus:ring-secondary-300 focus:outline-none;
+		@apply rounded-md fb-text hover:bg-secondary-100 hover:text-secondary-900 focus:ring-2 focus:ring-secondary-300 focus:outline-none;
 	}
 	.dark .fb-sidebar-item {
-		@apply text-secondary-100 hover:bg-secondary-800 hover:text-white focus:ring-secondary-700;
+		@apply hover:bg-secondary-800 hover:text-white focus:ring-secondary-700;
 	}
 
 	.fb-sidebar-item-active {
@@ -28,25 +59,4 @@
 		@apply bg-primary-500 hover:bg-primary-600 focus:ring-primary-800;
 	}
 
-	.fb-card {
-		@apply border border-secondary-200 bg-white;
-	}
-	.dark .fb-card {
-		@apply border-secondary-800 bg-secondary-900;
-	}
-}
-@layer components {
-	.fb-dropdown {
-		@apply rounded-md border border-secondary-200 bg-white text-secondary-800 shadow-md;
-	}
-	.dark .fb-dropdown {
-		@apply border-secondary-800 bg-secondary-900 text-secondary-100;
-	}
-
-	.fb-dropdown-item {
-		@apply block rounded px-3 py-2 hover:bg-secondary-100 hover:text-secondary-900 focus:ring-2 focus:ring-secondary-300 focus:outline-none;
-	}
-	.dark .fb-dropdown-item {
-		@apply hover:bg-secondary-800 hover:text-white focus:ring-secondary-700;
-	}
 }
