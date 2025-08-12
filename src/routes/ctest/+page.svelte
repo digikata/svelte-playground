@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Button, Card } from 'flowbite-svelte';
 
-
 	// Static JSON array of objects
 	const items = [
 		{ name: 'Alpha', description: 'First item description' },
@@ -9,14 +8,6 @@
 		{ name: 'Gamma', description: 'Third item description' },
 		{ name: 'Delta', description: 'Fourth item description' }
 	] as const;
-
-	function onView(item: (typeof items)[number]) {
-		console.log('view', item);
-	}
-
-	function onDelete(item: (typeof items)[number]) {
-		console.log('delete', item);
-	}
 </script>
 
 <svelte:head>

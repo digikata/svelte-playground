@@ -37,7 +37,7 @@
 
 <div class="min-h-screen">
 	<!-- Sidebar: reserved left column -->
-	<aside class="fb-sidebar fixed top-0 left-0 flex h-screenflex-col justify-between">
+	<aside class="fb-sidebar h-screenflex-col fixed left-0 top-0 flex justify-between">
 		<nav class="overflow-auto p-2">
 			<Sidebar>
 				<SidebarGroup>
@@ -51,8 +51,8 @@
 		</nav>
 	</aside>
 
-	<!-- Main content: offset by sidebar width -->
-	<main class="ml-64 p-6">
+	<!-- Main content: offset by sidebar width, fb_sidebar is w-64 -->
+	<main class="ml-64">
 		{@render children?.()}
 	</main>
 </div>

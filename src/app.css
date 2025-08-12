@@ -1,14 +1,12 @@
-/* vscode-css-lang-disable */
-
 @import 'tailwindcss';
 
-/* postcss-ignore-next */
 @plugin 'flowbite/plugin';
 
-/* postcss-ignore-next */
+@source "../node_modules/flowbite-svelte/dist";
+@source "../node_modules/flowbite-svelte-icons/dist";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* postcss-ignore-next */
 @theme {
 	--color-primary-50: #fff5f2;
 	--color-primary-100: #fff1ee;
@@ -32,11 +30,6 @@
 	--color-secondary-800: #075985;
 	--color-secondary-900: #0c4a6e;
 }
-
-/* postcss-ignore-next */
-@source "../node_modules/flowbite-svelte/dist";
-/* postcss-ignore-next */
-@source "../node_modules/flowbite-svelte-icons/dist";
 
 @import './lib/styles/flowbite-theme.css';
 

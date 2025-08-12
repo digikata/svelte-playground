@@ -10,7 +10,7 @@ build:
     npm run build
 
 check:
-    npm run check && npm run lint
+    npm run format && npm run check && npm run lint
 
 # run npm run format
 fmt:
