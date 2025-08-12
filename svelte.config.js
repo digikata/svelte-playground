@@ -19,6 +19,9 @@ const config = {
 			precompress: false,
 			strict: true
 		}),
+		alias: {
+ 			"@/*": "./src/lib/*",
+		},
 		appDir: `_app`
 	}
 };
