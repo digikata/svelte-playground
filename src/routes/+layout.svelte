@@ -39,9 +39,9 @@
 	<!-- Sidebar: reserved left column -->
 	<aside class="bg-surface border-default border-r h-screen fixed left-0 top-0 w-64 flex flex-col justify-between">
 		<nav class="overflow-auto p-2">
-			<Sidebar>
+			<Sidebar class="flowbite-sidebar !bg-surface bg-transparent">
 				<SidebarGroup>
-					<SidebarItem class="text-primaryhover:bg-surface-elevated" label="Home" href="/" />
+					<SidebarItem class="text-primary hover:bg-surface-elevated" label="Home" href="/" />
 					{#each routes as route (route)}
 						<SidebarItem class="text-primary hover:bg-surface-elevated" label="-- {route}" href={route} />
 					{/each}
