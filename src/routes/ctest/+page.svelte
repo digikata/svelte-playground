@@ -26,13 +26,25 @@
 		style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem;"
 	>
 		{#each items as item (item.name)}
-			<Card class="fb-card fb-text">
-				<h5>{item.name} aa</h5>
+			<Card>
+				<h5 class="text-foreground">{item.name} aa</h5>
+				<p class="text-gray-800 dark:text-white">{item.description}</p>
+				<p class="text-foreground">text-foreground</p>
 			</Card>
 		{/each}
 	</div>
 
+	<div class="bg-app">
+		<h5 class="text-primary">h5 text-primary</h5>
+		<p class="text-gray-800 dark:text-white">text-gray-800 dark:text-white</p>
+		<p class="text-secondary">p text-secondary</p>
+	</div>
+
 	<div>
 		<Button href="/" color="alternative" pill class="fb-btn-primary !fb-text">Home</Button>
+	</div>
+
+	<div>
+		<Button href="/" color="alternative" pill class="fb-btn-primary test-foreground">Home</Button>
 	</div>
 </section>
