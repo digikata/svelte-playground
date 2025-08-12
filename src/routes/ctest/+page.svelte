@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { Button, Card } from 'flowbite-svelte';
-
 	// Static JSON array of objects
 	const items = [
 		{ name: 'Alpha', description: 'First item description' },
@@ -15,31 +13,63 @@
 	<meta name="description" content="Placeholder for Card Test Page" />
 </svelte:head>
 
-<section class="bg-app p-8">
-	<h1 class="text-primary text-3xl font-bold mb-2">Card Test Page</h1>
-	<p class="text-secondary mb-8">This is a simple placeholder at /card-test.</p>
+<div class="container mx-auto space-y-8 p-8">
+	<header>
+		<h1 class="h1 font-bold">Card Test Page</h1>
+		<p class="text-surface-600-300-token">
+			This is a simple placeholder demonstrating SkeletonUI cards.
+		</p>
+	</header>
 
-	<h2 class="text-primary text-xl font-semibold mb-6">Cards</h2>
+	<section>
+		<h2 class="mb-6 h2 font-semibold">SkeletonUI Cards</h2>
 
-	<!-- Card grid -->
-	<div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-4 mb-8">
-		{#each items as item (item.name)}
-			<Card class="bg-surface-elevated border-default">
-				<h5 class="text-primary font-medium mb-2">{item.name} aa</h5>
-				<p class="text-secondary mb-2">{item.description}</p>
-				<p class="text-muted">text-foreground</p>
-			</Card>
-		{/each}
-	</div>
+		<!-- Card grid -->
+		<div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+			{#each items as item (item.name)}
+				<div class="preset-filled-surface rounded-lg shadow-lg">
+					<header class="border-b border-surface-200-800 p-4">
+						<h3 class="h4 font-medium">{item.name}</h3>
+					</header>
+					<section class="p-4">
+						<p class="text-surface-600-300-token">{item.description}</p>
+					</section>
+					<footer class="border-t border-surface-200-800 p-4">
+						<button
+							class="preset-filled-primary hover:preset-tonal-primary rounded px-3 py-1 text-sm"
+							>Action</button
+						>
+					</footer>
+				</div>
+			{/each}
+		</div>
+	</section>
 
-	<div class="bg-surface border-default border rounded-lg p-6 mb-6">
-		<h5 class="text-primary text-lg font-medium mb-2">h5 text-primary</h5>
-		<p class="text-secondary mb-2">text-gray-800 dark:text-white</p>
-		<p class="text-muted">p text-secondary</p>
-	</div>
+	<section>
+		<div class="preset-filled-secondary rounded-lg shadow-lg">
+			<header class="border-b border-surface-200-800 p-4">
+				<h3 class="h3">Typography Examples</h3>
+			</header>
+			<section class="space-y-2 p-4">
+				<h4 class="h4">Heading 4</h4>
+				<p class="text-surface-600-300-token">Secondary text using SkeletonUI color tokens</p>
+				<p class="text-surface-500-400-token">Muted text with proper contrast</p>
+			</section>
+		</div>
+	</section>
 
-	<div class="space-y-4">
-		<Button href="/" color="alternative" pill class="fb-btn-primary">Home</Button>
-		<Button href="/" color="alternative" pill class="fb-btn-primary">Home</Button>
-	</div>
-</section>
+	<section class="flex flex-wrap gap-4">
+		<a href="/" class="preset-filled-primary hover:preset-tonal-primary rounded-lg px-4 py-2"
+			>Home (Primary)</a
+		>
+		<a href="/" class="preset-filled-secondary hover:preset-tonal-secondary rounded-lg px-4 py-2"
+			>Home (Secondary)</a
+		>
+		<a
+			href="/"
+			class="preset-outlined-surface hover:preset-tonal-surface rounded-lg border border-surface-500 px-4 py-2"
+			>Home (Outline)</a
+		>
+		<a href="/" class="hover:preset-tonal-surface rounded-lg px-4 py-2">Home (Ghost)</a>
+	</section>
+</div>
