@@ -82,8 +82,7 @@ npm run test:e2e
     - Tooltip/Tooltip.svelte
 
 ## External Dependencies
-- **SkeletonUI**: Provides pre-styled components and themes.
-- **MeltUI**: Adds interactive UI elements like dropdowns and modals.
+- **Shadcn**: Provides a set of components and utilities for building modern UIs.
 - **TailwindCSS**: Utility-first CSS framework.
 - **Playwright**: Used for end-to-end testing.
 - **@lucide/svelte**: Provides a collection of icons for use in the application.
