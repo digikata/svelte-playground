@@ -1,0 +1,53 @@
+<script lang="ts">
+	// Static JSON array of objects
+	const items = [
+		{ name: 'Alpha', description: 'First item description' },
+		{ name: 'Beta', description: 'Second item description' },
+		{ name: 'Gamma', description: 'Third item description' },
+		{ name: 'Delta', description: 'Fourth item description' }
+	] as const;
+</script>
+
+<svelte:head>
+	<title>Card Test Page</title>
+	<meta name="description" content="Placeholder for Card Test Page" />
+</svelte:head>
+
+<section class="p-8 bg-base-200 text-base-content">
+	<h1 class="mb-2 text-3xl font-bold">Card Test Page</h1>
+	<p class="mb-8 opacity-80">This is a simple placeholder at /card-test.</p>
+
+	<h2 class="mb-6 text-xl font-semibold">Cards</h2>
+
+	<!-- Card grid -->
+	<div class="mb-8 gap-4 grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
+		{#each items as item (item.name)}
+			<div class="shadow-md card border border-base-300 bg-base-100">
+				<div class="p-4 card-body">
+					<h5 class="mb-2 font-medium card-title">{item.name}</h5>
+					<p class="mb-2 opacity-80">{item.description}</p>
+					<p class="opacity-60">text-foreground</p>
+				</div>
+			</div>
+		{/each}
+	</div>
+
+	<div class="mb-6 rounded-lg p-6 border border-base-300 bg-base-100">
+		<h5 class="mb-2 text-lg font-semibold">h5 text-primary</h5>
+		<p class="mb-2 opacity-80">text-gray-800 dark:text-white</p>
+		<p class="opacity-60">p text-secondary</p>
+	</div>
+
+	<div class="gap-4 flex flex-col">
+		<a href="/" class="btn btn-wide rounded-full btn-primary">Home</a>
+	</div>
+
+	<div class="gap-4 flex flex-col">
+		<div class="max-w-sm shadow-md card border border-base-300 bg-base-100">
+			<div class="p-4 card-body">
+				<h5 class="mb-2 font-medium card-title">Card header</h5>
+				<p class="mb-2 opacity-80">Card with hamburger menu</p>
+			</div>
+		</div>
+	</div>
+</section>

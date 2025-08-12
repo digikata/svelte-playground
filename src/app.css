@@ -1,12 +1,26 @@
 @import 'tailwindcss';
+
 @plugin "daisyui";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Minimal semantic helpers built on DaisyUI tokens */
+@layer utilities {
+	/* Only changes text color (alpha), not element/children opacity */
+	.text-secondary {
+		color: hsl(var(--bc) / 0.8);
+	}
+	.text-muted {
+		color: hsl(var(--bc) / 0.6);
+	}
+}
+
+/* old theme attempt?
 @theme {
 	--color-background: #ffffff;
 	--color-surface: #efefef;
 	--color-surface-elevated: #ffffff;
+
 	--color-text-primary: #0f172a;
 	--color-text-secondary: #475569;
 	--color-text-muted: #64748b;
@@ -37,27 +51,45 @@
 }
 
 .dark {
-  --color-background: #0f172a;
-  --color-surface: #1e293b;
-  --color-surface-elevated: #334155;
-  --color-text-primary: #f8fafc;
-  --color-text-secondary: #949da8;
-  --color-text-muted: #94a3b8;
-  --color-border: #475569;
-  --color-accent: #60a5fa;
+	--color-background: #0f172a;
+	--color-surface: #1e293b;
+	--color-surface-elevated: #334155;
+	--color-text-primary: #f8fafc;
+	--color-text-secondary: #949da8;
+	--color-text-muted: #94a3b8;
+	--color-border: #475569;
+	--color-accent: #60a5fa;
 }
-
+*/
 /* Utility classes */
+/*
 @layer utilities {
-  .bg-app { background-color: var(--color-background); }
-  .bg-surface { background-color: var(--color-surface); }
-  .bg-surface-elevated { background-color: var(--color-surface-elevated); }
-  .text-primary { color: var(--color-text-primary); }
-  .text-secondary { color: var(--color-text-secondary); }
-  .text-muted { color: var(--color-text-muted); }
-  .text-accent { color: var(--color-accent); }
-  .border-default { border-color: var(--color-border); }
+	.bg-app {
+		background-color: var(--color-background);
+	}
+	.bg-surface {
+		background-color: var(--color-surface);
+	}
+	.bg-surface-elevated {
+		background-color: var(--color-surface-elevated);
+	}
+	.text-primary {
+		color: var(--color-text-primary);
+	}
+	.text-secondary {
+		color: var(--color-text-secondary);
+	}
+	.text-muted {
+		color: var(--color-text-muted);
+	}
+	.text-accent {
+		color: var(--color-accent);
+	}
+	.border-default {
+		border-color: var(--color-border);
+	}
 }
+*/
 
 /* @layer base { */
 /* disable chrome cancel button */
