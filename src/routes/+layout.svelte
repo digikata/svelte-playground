@@ -35,24 +35,24 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="min-h-screen">
+<div class="min-h-screen bg-app">
 	<!-- Sidebar: reserved left column -->
-	<aside class="fb-sidebar h-screenflex-col fixed left-0 top-0 flex justify-between">
+	<aside class="bg-surface border-default border-r h-screen fixed left-0 top-0 w-64 flex flex-col justify-between">
 		<nav class="overflow-auto p-2">
 			<Sidebar>
 				<SidebarGroup>
-					<SidebarItem class="fb-sidebar-item" label="Home" href="/" />
+					<SidebarItem class="text-primaryhover:bg-surface-elevated" label="Home" href="/" />
 					{#each routes as route (route)}
-						<SidebarItem class="fb-sidebar-item" label="-- {route}" href={route} />
+						<SidebarItem class="text-primary hover:bg-surface-elevated" label="-- {route}" href={route} />
 					{/each}
-					<SidebarItem class="fb-sidebar-item" label="Toggle Theme" onclick={toggleTheme} />
+					<SidebarItem class="text-primary hover:bg-surface-elevated" label="Toggle Theme" onclick={toggleTheme} />
 				</SidebarGroup>
 			</Sidebar>
 		</nav>
 	</aside>
 
-	<!-- Main content: offset by sidebar width, fb_sidebar is w-64 -->
-	<main class="ml-64">
+	<!-- Main content: offset by sidebar width -->
+	<main class="ml-64 bg-app text-primary min-h-screen">
 		{@render children?.()}
 	</main>
 </div>

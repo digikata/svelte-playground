@@ -15,36 +15,31 @@
 	<meta name="description" content="Placeholder for Card Test Page" />
 </svelte:head>
 
-<section style="padding: 2rem;">
-	<h1>Card Test Page</h1>
-	<p>This is a simple placeholder at /card-test.</p>
+<section class="bg-app p-8">
+	<h1 class="text-primary text-3xl font-bold mb-2">Card Test Page</h1>
+	<p class="text-secondary mb-8">This is a simple placeholder at /card-test.</p>
 
-	<h2 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Cards</h2>
+	<h2 class="text-primary text-xl font-semibold mb-6">Cards</h2>
 
 	<!-- Card grid -->
-	<div
-		style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem;"
-	>
+	<div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-4 mb-8">
 		{#each items as item (item.name)}
-			<Card>
-				<h5 class="text-foreground">{item.name} aa</h5>
-				<p class="text-gray-800 dark:text-white">{item.description}</p>
-				<p class="text-foreground">text-foreground</p>
+			<Card class="bg-surface-elevated border-default">
+				<h5 class="text-primary font-medium mb-2">{item.name} aa</h5>
+				<p class="text-secondary mb-2">{item.description}</p>
+				<p class="text-muted">text-foreground</p>
 			</Card>
 		{/each}
 	</div>
 
-	<div class="bg-app">
-		<h5 class="text-primary">h5 text-primary</h5>
-		<p class="text-gray-800 dark:text-white">text-gray-800 dark:text-white</p>
-		<p class="text-secondary">p text-secondary</p>
+	<div class="bg-surface border-default border rounded-lg p-6 mb-6">
+		<h5 class="text-primary text-lg font-medium mb-2">h5 text-primary</h5>
+		<p class="text-secondary mb-2">text-gray-800 dark:text-white</p>
+		<p class="text-muted">p text-secondary</p>
 	</div>
 
-	<div>
-		<Button href="/" color="alternative" pill class="fb-btn-primary !fb-text">Home</Button>
-	</div>
-
-	<div>
-		<Button href="/" color="alternative" pill class="fb-btn-primary test-foreground">Home</Button>
+	<div class="space-y-4">
+		<Button href="/" color="alternative" pill class="fb-btn-primary">Home</Button>
+		<Button href="/" color="alternative" pill class="fb-btn-primary">Home</Button>
 	</div>
 </section>
