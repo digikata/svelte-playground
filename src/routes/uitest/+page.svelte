@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Menu as MenuIcon } from '@lucide/svelte';
 	// Static JSON array of objects
 	const items = [
 		{ name: 'Alpha', description: 'First item description' },
@@ -6,6 +7,17 @@
 		{ name: 'Gamma', description: 'Third item description' },
 		{ name: 'Delta', description: 'Fourth item description' }
 	] as const;
+
+	// Hamburger menu state for last card
+	let showMenu = false;
+	function handleEdit() {
+		alert('Edit clicked');
+		showMenu = false;
+	}
+	function handleDelete() {
+		alert('Delete clicked');
+		showMenu = false;
+	}
 </script>
 
 <svelte:head>
@@ -42,8 +54,19 @@
 		<a href="/" class="btn btn-wide rounded-full btn-primary">Home</a>
 	</div>
 
+	<!-- Card with hamburger menu -->
 	<div class="gap-4 flex flex-col">
-		<div class="max-w-sm shadow-md card border border-base-300 bg-base-100">
+		<div class="relative max-w-sm shadow-md card border border-base-300 bg-base-100">
+			<!-- Hamburger menu at true top-right of the card -->
+			<button class="absolute top-2 right-2 p-2 rounded-full hover:bg-base-200 focus:outline-none z-20" aria-label="Menu" on:click={() => showMenu = !showMenu}>
+				<MenuIcon />
+			</button>
+			{#if showMenu}
+				<div class="absolute right-2 top-12 w-32 bg-base-100 border border-base-300 rounded shadow-lg z-30">
+					<button class="block w-full text-left px-4 py-2 hover:bg-base-200" on:click={handleEdit}>Edit</button>
+					<button class="block w-full text-left px-4 py-2 hover:bg-base-200" on:click={handleDelete}>Delete</button>
+				</div>
+			{/if}
 			<div class="p-4 card-body">
 				<h5 class="mb-2 font-medium card-title">Card header</h5>
 				<p class="mb-2 opacity-80">Card with hamburger menu</p>
