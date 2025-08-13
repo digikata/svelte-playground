@@ -44,12 +44,14 @@
 		{/each}
 	</div>
 
+	<!-- class text check -->
 	<div class="mb-6 rounded-lg p-6 border border-base-300 bg-base-100">
 		<h5 class="mb-2 text-lg font-semibold">h5 text-primary</h5>
 		<p class="mb-2 opacity-80">text-gray-800 dark:text-white</p>
 		<p class="opacity-60">p text-secondary</p>
 	</div>
 
+	<!-- Button to Home, simple button -->
 	<div class="gap-4 flex flex-col">
 		<a href="/" class="btn btn-wide rounded-full btn-primary">Home</a>
 	</div>

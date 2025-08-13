@@ -7,7 +7,7 @@ const config = {
   // DaisyUI v5 options are read from here when using the CSS @plugin directive
   // in app.css. No need to add daisyui to the plugins array in v4.
   daisyui: {
-    themes: ['light', 'dark'],
+    // themes: ['light', 'dark', 'cupcake', 'forest', 'lofi', 'dracula'],
     darkTheme: 'dark',
     base: true,
     styled: true,
