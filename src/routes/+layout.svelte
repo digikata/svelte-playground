@@ -43,9 +43,9 @@
 <div class="min-h-screen bg-base-200">
 	<!-- Sidebar: reserved left column -->
 	<aside
-		class="top-0 left-0 fixed flex h-screen w-48 flex-col border-r border-base-300 bg-base-200"
+		class="fixed top-0 left-0 flex h-screen w-48 flex-col border-r border-base-300 bg-base-200"
 	>
-		<nav class="p-2 overflow-auto">
+		<nav class="overflow-auto p-2">
 			<ul class="menu menu-vertical w-full rounded-box">
 				<li>
 					<a href="/">Home</a>

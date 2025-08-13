@@ -2,7 +2,14 @@
 
 /* @plugin "daisyui"; */
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark, cupcake, forest, lofi, dracula, caramellatte;
+	themes:
+		light --default,
+		dark --prefersdark,
+		cupcake,
+		forest,
+		lofi,
+		dracula,
+		caramellatte;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
