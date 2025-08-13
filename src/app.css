@@ -9,7 +9,10 @@
 		forest,
 		lofi,
 		dracula,
-		caramellatte;
+		caramellatte,
+		abyss,
+		nord
+		;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

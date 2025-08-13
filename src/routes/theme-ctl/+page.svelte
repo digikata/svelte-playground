@@ -7,7 +7,9 @@
 		{ name: 'Forest', value: 'forest' },
 		{ name: 'Lofi', value: 'lofi' },
 		{ name: 'Dracula', value: 'dracula' },
-		{ name: 'Caramel Latte', value: 'caramellatte' }
+		{ name: 'Caramel Latte', value: 'caramellatte' },
+		{ name: 'Abyss', value: 'abyss' },
+		{ name: 'Nord', value: 'nord' }
 	];
 
 	function setTheme(theme: string) {

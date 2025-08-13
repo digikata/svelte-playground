@@ -1,11 +1,19 @@
 <script lang="ts">
-	import { Sun, Moon } from '@lucide/svelte';
+	// import { Sun, Moon } from '@lucide/svelte';
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import { onMount } from 'svelte';
+	// import { onMount } from 'svelte';
 	import { getTopLevelRoutes } from '$lib/routeUtils';
 
 	const routes = getTopLevelRoutes();
+
+	// link routes
+	const linkItems = [
+		{ name: 'DaisyUI', url: 'https://daisyui.com/components/accordion/' },
+		{ name: 'DaisyUI Util CSS', url: 'https://daisyui.com/docs/utilities/' },
+		{ name: 'Lucide Icons', url: 'https://lucide.dev/icons' },
+		{ name: 'SvelteKit', url: 'https://svelte.dev/docs/kit/introduction' }
+	] as const;
 
 	let { children } = $props();
 
@@ -60,6 +68,12 @@
 						{#if dark}<Moon size={18}/>{:else}<Sun size={18}/>{/if}
 					</button>
 				</li> -->
+				<li class="menu-title"><span>Links</span></li>
+				{#each linkItems as item (item.name)}
+					<li>
+						<a href={item.url} target="_blank" rel="noopener noreferrer">-- {item.name}</a>
+					</li>
+				{/each}
 			</ul>
 		</nav>
 	</aside>
