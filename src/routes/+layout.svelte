@@ -1,9 +1,13 @@
 <script lang="ts">
+	// from time to time, something with `npm run dev` hot loading can
+	// cause the side drawer menu to become unresponsive, usually when
+	// editing this layout file.
+	// npm run dev and refreshing the page seems to clear the problem
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import { getTopLevelRoutes } from '$lib/routeUtils';
 	import { theme } from '$lib/store/theme';
-	import { Home as HomeIcon } from '@lucide/svelte';
+	import AppBadge from '$lib/components/AppBadge.svelte';
 	import { ExternalLink as ExternalLinkIcon } from '@lucide/svelte';
 	const routes = getTopLevelRoutes();
 
@@ -40,11 +44,11 @@
 		<div class="navbar w-full bg-base-300 lg:hidden">
 			<div class="flex-none">
 				<!-- Hamburger toggles drawer -->
-				<label for="app-drawer" class="btn btn-square btn-ghost">
-					<HomeIcon />
+				<label for="app-drawer" class="btn btn-ghost">
+					<AppBadge />
 				</label>
 			</div>
-			<div class="mx-2 flex-1 px-2 font-bold">My App</div>
+			<!-- <div class="mx-2 flex-1 px-2 font-bold">My App</div> -->
 		</div>
 
 		<!-- Page content -->
@@ -60,13 +64,9 @@
 
 		<!-- Sidebar content -->
 		<aside class="menu min-h-full w-64 bg-base-200 p-4">
-			<div class="mb-4 text-xl font-bold">
-				<!-- Hamburger toggles drawer -->
-				<label class="btn btn-square btn-ghost">
-					<HomeIcon />
-				</label>
-				My App
-			</div>
+			<label for="app-drawer" class="mb-4 text-xl font-bold cursor-pointer">
+				<AppBadge containerClass="btn btn-ghost" />
+			</label>
 			<ul>
 				<li>
 					<a href="/">Home</a>
