@@ -1,25 +1,6 @@
 <script lang="ts">
-	let currentTheme: string = 'light';
-	const availableThemes = [
-		{ name: 'Light', value: 'light' },
-		{ name: 'Dark', value: 'dark' },
-		{ name: 'Cupcake', value: 'cupcake' },
-		{ name: 'Forest', value: 'forest' },
-		{ name: 'Lofi', value: 'lofi' },
-		{ name: 'Dracula', value: 'dracula' },
-		{ name: 'Caramel Latte', value: 'caramellatte' },
-		{ name: 'Abyss', value: 'abyss' },
-		{ name: 'Nord', value: 'nord' }
-	];
-
-	function setTheme(theme: string) {
-		currentTheme = theme;
-		document.documentElement.setAttribute('data-theme', theme);
-	}
-
-	// Keep <html data-theme> in sync when currentTheme changes (e.g., via theme-controller radios)
-	$: typeof document !== 'undefined' &&
-		document.documentElement.setAttribute('data-theme', currentTheme);
+	import { availableThemes } from '$lib/ThemeType';
+	import { theme } from '$lib/store/theme';
 </script>
 
 <!-- Removed dropdown: showing open radio group in the card below -->
@@ -32,19 +13,20 @@
 			<h2 class="card-title text-primary">Theme Demonstration</h2>
 			<div class="flex items-center gap-4">
 				<p class="text-base-content">
-					Current theme: <span class="font-bold text-accent">{currentTheme}</span>
+					Current theme: <span class="font-bold text-accent">{$theme}</span>
 				</p>
 				<fieldset class="fieldset flex flex-wrap gap-3 rounded-box bg-base-300/50 p-3">
-					{#each availableThemes as theme}
+					{#each availableThemes as atheme (atheme.value)}
 						<label class="flex cursor-pointer items-center gap-2">
 							<input
 								type="radio"
 								name="theme-radios"
 								class="theme-controller radio radio-sm"
-								value={theme.value}
-								bind:group={currentTheme}
+								value={atheme.value}
+								checked={$theme === atheme.value}
+								onchange={() => ($theme = atheme.value)}
 							/>
-							{theme.name}
+							{atheme.name}
 						</label>
 					{/each}
 				</fieldset>

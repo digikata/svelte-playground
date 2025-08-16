@@ -8,8 +8,6 @@
 		to read the documentation
 	</p>
 	<p class="opacity-80">
-		Flowbite Svelte <a href="https://flowbite-svelte.com/docs/components" class="link link-primary"
-			>kit</a
-		>
+		<a href="https://daisyui.com/components/" class="link link-primary"> DaisyUI </a>
 	</p>
 </div>

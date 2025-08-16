@@ -8,15 +8,24 @@
 		{ name: 'Delta', description: 'Fourth item description' }
 	] as const;
 
-	// Hamburger menu state for last card
-	let showMenu = false;
+	// // Add state for menu visibility
+	// let isMenuOpen = false;
+
+	// function toggleMenu() {
+	// 	isMenuOpen = !isMenuOpen;
+	// }
+
+	// function closeMenu() {
+	// 	isMenuOpen = false;
+	// }
+
 	function handleEdit() {
+		// closeMenu();
 		alert('Edit clicked');
-		showMenu = false;
 	}
 	function handleDelete() {
+		// closeMenu();
 		alert('Delete clicked');
-		showMenu = false;
 	}
 </script>
 
@@ -59,26 +68,23 @@
 	<!-- Card with hamburger menu -->
 	<div class="flex flex-col gap-4">
 		<div class="card relative max-w-sm border border-base-300 bg-base-100 shadow-md">
-			<!-- Hamburger menu at true top-right of the card -->
-			<button
-				class="absolute top-2 right-2 z-20 rounded-full p-2 hover:bg-base-200 focus:outline-none"
-				aria-label="Menu"
-				on:click={() => (showMenu = !showMenu)}
-			>
-				<MenuIcon />
-			</button>
-			{#if showMenu}
-				<div
-					class="absolute top-12 right-2 z-30 w-32 rounded border border-base-300 bg-base-100 shadow-lg"
-				>
-					<button class="block w-full px-4 py-2 text-left hover:bg-base-200" on:click={handleEdit}
-						>Edit</button
-					>
-					<button class="block w-full px-4 py-2 text-left hover:bg-base-200" on:click={handleDelete}
-						>Delete</button
-					>
-				</div>
-			{/if}
+			<!-- Card menu (daisyUI) details method (doesnt close on click when open)-->
+			<!-- <details class="dropdown absolute top-2 right-2 z-20">
+				<summary class="btn m-1"><MenuIcon /></summary>
+				<ul class="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+					<li><button role="menuitem" on:click={handleEdit}>Edit</button></li>
+					<li><button role="menuitem" on:click={handleDelete}>Delete</button></li>
+				</ul>
+			</details> -->
+			<!-- Card menu (daisyUI) css method-->
+			<div class="dropdown absolute top-2 right-2 z-20">
+				<div tabindex="-1" role="button" class="btn m-1 bg-base-100 btn-ghost"><MenuIcon /></div>
+				<ul tabindex="-1" class="dropdown-content menu z-1 w-52 bg-base-100 p-2">
+					<li><button role="menuitem" on:click={handleEdit}>Edit</button></li>
+					<li><button role="menuitem" on:click={handleDelete}>Delete</button></li>
+				</ul>
+			</div>
+
 			<div class="card-body p-4">
 				<h5 class="mb-2 card-title font-medium">Card header</h5>
 				<p class="mb-2 opacity-80">Card with hamburger menu</p>

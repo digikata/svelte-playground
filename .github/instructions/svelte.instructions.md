@@ -1,0 +1,1 @@
+../../.kilocode/rules/svelte-small.md

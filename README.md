@@ -1,3 +1,10 @@
+# LLM Setup
+
+sveltekit rules files
+
+https://svelte.dev/docs/llms
+https://daisyui.com/docs/editor/ daisyUI rules files
+
 # sv
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).

@@ -1,10 +1,10 @@
 <script lang="ts">
-	// import { Sun, Moon } from '@lucide/svelte';
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
-	// import { onMount } from 'svelte';
 	import { getTopLevelRoutes } from '$lib/routeUtils';
-
+	import { theme } from '$lib/store/theme';
+	import { Home as HomeIcon } from '@lucide/svelte';
+	import { ExternalLink as ExternalLinkIcon } from '@lucide/svelte';
 	const routes = getTopLevelRoutes();
 
 	// link routes
@@ -16,45 +16,58 @@
 	] as const;
 
 	let { children } = $props();
-
-	// let dark = $state(false);
-
-	// onMount(() => {
-	// 	const stored = localStorage.getItem('theme');
-	// 	if (stored === 'dark') dark = true;
-	// 	else if (stored === 'light') dark = false;
-	// 	else dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-	// 	applyTheme();
-	// });
-
-	// function applyTheme() {
-	// 	// Keep Tailwind dark: variants working
-	// 	if (dark) document.documentElement.classList.add('dark');
-	// 	else document.documentElement.classList.remove('dark');
-	// 	// Set DaisyUI theme so base-* and content tokens switch correctly
-	// 	document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-	// 	localStorage.setItem('theme', dark ? 'dark' : 'light');
-	// }
-
-	// function toggleTheme() {
-	// 	dark = !dark;
-	// 	applyTheme();
-	// }
-
-	let sb_wide = '42';
+	$effect(() => {
+		const t = $theme;
+		if (typeof document === 'undefined') return;
+		// apply DaisyUI data-theme
+		document.documentElement.setAttribute('data-theme', t ?? 'dark');
+	});
 </script>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<!-- redundant w/ import app.css? -->
+	<!-- <link href="/src/app.css" rel="stylesheet" /> -->
 </svelte:head>
 
-<div class="min-h-screen bg-base-200">
-	<!-- Sidebar: reserved left column -->
-	<aside
-		class="fixed top-0 left-0 flex h-screen w-48 flex-col border-r border-base-300 bg-base-200"
-	>
-		<nav class="overflow-auto p-2">
-			<ul class="menu menu-vertical w-full rounded-box">
+<div class="drawer min-h-screen lg:drawer-open">
+	<!-- Drawer toggle checkbox -->
+	<input id="app-drawer" type="checkbox" class="drawer-toggle" />
+
+	<!-- Main content -->
+	<div class="drawer-content flex flex-col">
+		<!-- Mobile navbar -->
+		<div class="navbar w-full bg-base-300 lg:hidden">
+			<div class="flex-none">
+				<!-- Hamburger toggles drawer -->
+				<label for="app-drawer" class="btn btn-square btn-ghost">
+					<HomeIcon />
+				</label>
+			</div>
+			<div class="mx-2 flex-1 px-2 font-bold">My App</div>
+		</div>
+
+		<!-- Page content -->
+		<div class="flex-1 p-6">
+			{@render children?.()}
+		</div>
+	</div>
+
+	<!-- Sidebar -->
+	<div class="drawer-side sm:w-64">
+		<!-- Overlay: clicking outside closes drawer on mobile -->
+		<label for="app-drawer" class="drawer-overlay"></label>
+
+		<!-- Sidebar content -->
+		<aside class="menu min-h-full w-64 bg-base-200 p-4">
+			<div class="mb-4 text-xl font-bold">
+				<!-- Hamburger toggles drawer -->
+				<label class="btn btn-square btn-ghost">
+					<HomeIcon />
+				</label>
+				My App
+			</div>
+			<ul>
 				<li>
 					<a href="/">Home</a>
 				</li>
@@ -63,23 +76,16 @@
 						<a href={route}>-- {route}</a>
 					</li>
 				{/each}
-				<!-- <li>
-					<button type="button" class="text-sm justify-start opacity-70" onclick={toggleTheme}>
-						{#if dark}<Moon size={18}/>{:else}<Sun size={18}/>{/if}
-					</button>
-				</li> -->
 				<li class="menu-title"><span>Links</span></li>
 				{#each linkItems as item (item.name)}
 					<li>
-						<a href={item.url} target="_blank" rel="noopener noreferrer">-- {item.name}</a>
+						<a href={item.url} target="_blank" rel="noopener noreferrer"
+							>-- {item.name}
+							<ExternalLinkIcon class="inline-block h-3 w-3" /></a
+						>
 					</li>
 				{/each}
 			</ul>
-		</nav>
-	</aside>
-
-	<!-- Main content: offset by sidebar width -->
-	<main class="ml-48 min-h-screen bg-base-200 text-base-content">
-		{@render children?.()}
-	</main>
+		</aside>
+	</div>
 </div>

@@ -11,8 +11,7 @@
 		dracula,
 		caramellatte,
 		abyss,
-		nord
-		;
+		nord;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
