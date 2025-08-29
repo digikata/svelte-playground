@@ -26,6 +26,28 @@
 		// apply DaisyUI data-theme
 		document.documentElement.setAttribute('data-theme', t ?? 'dark');
 	});
+
+	// close the drawer when a sidebar link is clicked (mobile)
+	function handleNavClick(e: MouseEvent) {
+		if (typeof document === 'undefined') return;
+		const target = e.target as HTMLElement | null;
+		if (!target) return;
+		const anchor = target.closest('a');
+		if (!anchor) return;
+		const cb = document.getElementById('app-drawer') as HTMLInputElement | null;
+		if (cb) cb.checked = false;
+	}
+	// keyboard counterpart to satisfy a11y lint: handle Enter / Space
+	function handleNavKeyDown(e: KeyboardEvent) {
+		if (typeof document === 'undefined') return;
+		if (e.key !== 'Enter' && e.key !== ' ') return;
+		const target = e.target as HTMLElement | null;
+		if (!target) return;
+		const anchor = target.closest('a');
+		if (!anchor) return;
+		const cb = document.getElementById('app-drawer') as HTMLInputElement | null;
+		if (cb) cb.checked = false;
+	}
 </script>
 
 <svelte:head>
@@ -64,22 +86,31 @@
 
 		<!-- Sidebar content -->
 		<aside class="menu min-h-full w-64 bg-base-200 p-4">
-			<label for="app-drawer" class="mb-4 text-xl font-bold cursor-pointer">
-				<AppBadge containerClass="btn btn-ghost" />
+			<label for="app-drawer" class="mb-4 cursor-pointer text-xl font-bold">
+				<AppBadge
+					containerClass="btn btn-ghost"
+					onclick={handleNavClick}
+					onkeydown={handleNavKeyDown}
+				/>
 			</label>
 			<ul>
 				<li>
-					<a href="/">Home</a>
+					<a href="/" onclick={handleNavClick} onkeydown={handleNavKeyDown}>Home</a>
 				</li>
 				{#each routes as route (route)}
 					<li>
-						<a href={route}>-- {route}</a>
+						<a href={route} onclick={handleNavClick} onkeydown={handleNavKeyDown}>-- {route}</a>
 					</li>
 				{/each}
 				<li class="menu-title"><span>Links</span></li>
 				{#each linkItems as item (item.name)}
 					<li>
-						<a href={item.url} target="_blank" rel="noopener noreferrer"
+						<a
+							href={item.url}
+							target="_blank"
+							rel="noopener noreferrer"
+							onclick={handleNavClick}
+							onkeydown={handleNavKeyDown}
 							>-- {item.name}
 							<ExternalLinkIcon class="inline-block h-3 w-3" /></a
 						>
